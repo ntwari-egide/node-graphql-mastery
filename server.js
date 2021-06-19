@@ -111,17 +111,20 @@ const RootMutationQuery = new GraphQLObjectType({
     name: 'Root mutations',
     description: '',
     fields: () => ({
-        addBook = {type: BookType},
-        description: 'add book',
-        args: {
-            name: {type: GraphQLNonNull(GraphQLString)},
-            authorId: {type: GraphQLNonNull(GraphQLInt)}
-        },
-        resolve: () => {
-            const book = {id: books.length + 1, name: args.name, authorId: args.authorId}
-            books.push(book)
-
-            return book
+        addBook = {
+            type: BookType,
+            description: 'add book',
+            args: {
+                name: {type: GraphQLNonNull(GraphQLString)},
+                authorId: {type: GraphQLNonNull(GraphQLInt)}
+            },
+            resolve: () => {
+                const book = {id: books.length + 1, name: args.name, authorId: args.authorId}
+                books.push(book)
+    
+                return book
+            }
+        
         }
     })
 })
