@@ -118,7 +118,7 @@ const RootMutationQuery = new GraphQLObjectType({
                 name: {type: GraphQLNonNull(GraphQLString)},
                 authorId: {type: GraphQLNonNull(GraphQLInt)}
             },
-            resolve: () => {
+            resolve: (parent,args) => {
                 const book = {id: books.length + 1, name: args.name, authorId: args.authorId}
                 books.push(book)
     
