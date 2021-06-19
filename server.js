@@ -19,7 +19,11 @@ const schema  = new GraphQLSchema({
     })
 })
 
-app.use('/graphql',expressGraphQl({}))
+app.use('/graphql',expressGraphQl({
+    schema: schema,
+    graphiql: true
+}))
+
 app.listen(5000,()=>{
     console.log("Server running ....");
 })
