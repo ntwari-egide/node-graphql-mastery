@@ -50,7 +50,9 @@ const books = [
         name: {type : GraphQLNonNull(GraphQLString)},
         books: {
             type: GraphQLList(AuthorType),
-            resolve: (author) => books.find(book => book.authorId === author.id)
+            resolve: (author) =>{
+                return  books.filter(book => book.authorId === author.id)
+            }
         }
     })
  })
