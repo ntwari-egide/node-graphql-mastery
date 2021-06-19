@@ -1,0 +1,25 @@
+{
+  "name": "graphql-mastery",
+  "version": "1.0.0",
+  "description": "this is node js graphyQl mastery",
+  "main": "server.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntwari-egide/node-graphql-mastery.git"
+  },
+  "author": "ntwari egide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ntwari-egide/node-graphql-mastery/issues"
+  },
+  "homepage": "https://github.com/ntwari-egide/node-graphql-mastery#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0",
+    "nodemon": "^2.0.7"
+  }
+}
