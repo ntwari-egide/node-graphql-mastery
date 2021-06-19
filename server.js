@@ -7,6 +7,13 @@ const {
 } =  require('graphql')
 const app = express()
 
+
+const authors = [
+    {id: 1,name: 'ntwari'},
+    {id: 2,name: 'mugisha'},
+    {id: 3,name: 'jules'}
+]
+
 const schema  = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: 'helloWorld',
