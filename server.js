@@ -109,9 +109,9 @@ const RootQueryType = new GraphQLObjectType({
 
 const RootMutationQuery = new GraphQLObjectType({
     name: 'Root mutations',
-    description: '',
+    description: 'add book mutation query',
     fields: () => ({
-        addBook = {
+        addBook : {
             type: BookType,
             description: 'add book',
             args: {
