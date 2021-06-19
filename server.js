@@ -24,29 +24,46 @@ const books = [
     {id: 4,name: 'Java spring boot',authorId: 2}
 ]
 
-const schema  = new GraphQLSchema({
-    query: new GraphQLObjectType({
-        name: 'helloWorld',
-        fields: () => ({
-            message: {
-                type: GraphQLString,
-                resolve:() => 'hello world graphql'
-            }
-        })
-    })
-})
+// const schema  = new GraphQLSchema({
+//     query: new GraphQLObjectType({
+//         name: 'helloWorld',
+//         fields: () => ({
+//             message: {
+//                 type: GraphQLString,
+//                 resolve:() => 'hello world graphql'
+//             }
+//         })
+//     })
+// })
 
 /**
  * Root query type
  */
 
+
+
+ const AuthorType = new GraphQLObjectType({
+    name: 'Author',
+    description: 'this represents author of a book',
+    fields: () => ({
+        id: {type : GraphQLNonNull(GraphQLInt)},
+        name: {type : GraphQLNonNull(GraphQLString)}
+    })
+ })
 const BookType = new GraphQLObjectType({
     name: 'Book',
     description: 'this represents a book',
     fields: () => ({
         id: {type : GraphQLNonNull(GraphQLInt)},
         name: {type : GraphQLNonNull(GraphQLString)},
-        authorId: {type : GraphQLNonNull(GraphQLInt)}
+        authorId: {type : GraphQLNonNull(GraphQLInt)},
+        // Introducing joins in Graphql
+        author: {
+            type : AuthorType,
+            resolve: (book) => {
+                return authors.find(author => authors.id == book.id)
+            }
+        }
     })
 })
 
@@ -60,6 +77,12 @@ const RootQueryType = new GraphQLObjectType({
             resolve: () => books
         }
     })
+})
+
+
+
+const schema = new GraphQLSchema({
+    query: RootQueryType
 })
 
 app.use('/graphql',expressGraphQl({
